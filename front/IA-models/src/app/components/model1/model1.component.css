@@ -37,3 +37,23 @@
   height: auto;
   border-radius: 20px;
 }
+
+.main-container-canva {
+  display: flex;
+  align-items: center;
+}
+
+#canvas-container {
+  width: 100%;
+  text-align: center;
+  /* padding-right: 10vh; */
+}
+#canvas-model1 {
+  border: 1px solid black;
+}
+
+.result {
+  width: 100%;
+  text-align: center;
+  font-size: 10rem;
+}

@@ -28,7 +28,11 @@
       <img src="../../../assets/img/datasets-numbers.jpg" alt="emnist"/>
     </div>
   </div>
-  <div class="canva-container">
-    <app-canvas></app-canvas>
-  </div>
+  <div class="main-container-canva">
+    <div id="canvas-container">
+        <canvas id="canvas-model2" width="280" height="280"></canvas>
+    </div>
+    <canvas id="hidden-canvas-model2" width="28" height="28" style="display:none;"></canvas>
+    <div class="result">{{resultado}}</div>
+  </div> 
 </div>
