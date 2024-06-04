@@ -1,0 +1,34 @@
+<div class="main-container">
+  <h1>Reconocimiento de números.</h1>
+  <div class="introduction-container">
+    <div class="description-container">
+      <p>
+        Este modelo es capaz de reconocer números escritos a mano, por medio de un canva que se encontrará en la parte de abajo.
+      </p>
+      <h3 class="subtitle">
+        Las librerías y pasos para el entrenamiento han sido los siguientes:
+      </h3>
+      <li>
+        Se ha utilizado Python para el desarrollo de este modelo.
+      </li>
+      <li>
+        Para el entrenamiento de esta red neuronal, se ha utilizado la librería de código abierto TensorFlow.
+      </li>
+      <li>
+        Se ha utilizado un dataset emnist que contiene 60.000 imágenes de números escritos a mano de 28x28 pixeles, como se puede visualizar a la derecha.
+      </li>
+      <li>
+        Se ha utilizado una red neuronal convolucional (CNN) para el entrenamiento de este modelo.
+      </li>
+      <li>
+        Se han asignado 5 capas, una con profundidad de 32, otras dos de 64 y otras dos de 128.
+      </li>
+    </div>
+    <div class="datasets-image-container">
+      <img src="../../../assets/img/datasets-numbers.jpg" alt="emnist"/>
+    </div>
+  </div>
+  <div class="canva-container">
+    <app-canvas></app-canvas>
+  </div>
+</div>

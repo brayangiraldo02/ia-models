@@ -1,0 +1,19 @@
+.main-container {
+  display: flex;
+  align-items: center;
+}
+
+#canvas-container {
+  width: 100%;
+  text-align: center;
+  /* padding-right: 10vh; */
+}
+#canvas {
+  border: 1px solid black;
+}
+
+.result {
+  width: 100%;
+  text-align: center;
+  font-size: 10rem;
+}
