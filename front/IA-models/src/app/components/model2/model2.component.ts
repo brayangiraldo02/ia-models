@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -7,6 +7,8 @@ import * as $ from 'jquery';
   styleUrls: ['./model2.component.css']
 })
 export class Model2Component implements AfterViewInit {
+  @ViewChild('canvasModel2') canvasRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('hiddenCanvasModel2') hiddenCanvasRef!: ElementRef<HTMLCanvasElement>;
   resultado: string = '';
 
   ngAfterViewInit(): void {
@@ -14,7 +16,7 @@ export class Model2Component implements AfterViewInit {
   }
 
   setupCanvas(): void {
-    const canvas = document.getElementById('canvas-model2') as HTMLCanvasElement;
+    const canvas = this.canvasRef.nativeElement;
     const ctx = canvas.getContext('2d');
     if (!ctx) {
       console.error('2D context not supported or canvas already initialized');
@@ -33,7 +35,7 @@ export class Model2Component implements AfterViewInit {
       ctx.moveTo(pos.x, pos.y);
 
       // Limpiar el canvas oculto al iniciar un nuevo dibujo
-      const hiddenCanvas = document.getElementById('hidden-canvas-model2') as HTMLCanvasElement;
+      const hiddenCanvas = this.hiddenCanvasRef.nativeElement;
       const hiddenCtx = hiddenCanvas.getContext('2d');
       if (hiddenCtx) {
         hiddenCtx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
@@ -53,7 +55,7 @@ export class Model2Component implements AfterViewInit {
       mousedown = false;
 
       // Redimensionar la imagen a 28x28
-      const hiddenCanvas = document.getElementById('hidden-canvas-model2') as HTMLCanvasElement;
+      const hiddenCanvas = this.hiddenCanvasRef.nativeElement;
       const hiddenCtx = hiddenCanvas.getContext('2d');
       if (!hiddenCtx) {
         console.error('2D context not supported or canvas already initialized');
