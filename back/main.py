@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from version1 import model1_router
+from version3 import model3_router
 
 # Inicializa la aplicación FastAPI
 app = FastAPI()
@@ -14,6 +15,7 @@ app.add_middleware(
 )
 
 app.include_router(model1_router)
+app.include_router(model3_router)
 
 @app.get("/")
 def read_root():
