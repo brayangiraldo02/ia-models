@@ -1,21 +1,19 @@
 <div class="main-container">
   <h1>Reconocimiento de letras.</h1>
+  <hr class="divider"/> 
   <div class="introduction-container">
     <div class="description-container">
       <p>
-        Este modelo es capaz de reconocer números escritos a mano. 
+        Este modelo es capaz de reconocer letras escritos a mano, dibujados en el canvas que está en la parte de abajo. Además, reconoce los números mostrados en la anterior versión.
       </p>
       <h3 class="subtitle">
         Las librerías y pasos para el entrenamiento han sido los siguientes:
       </h3>
       <li>
-        Se ha utilizado este <a href="https://www.youtube.com/watch?v=aFZEvQDTSyA" target="_blank">video</a> como apoyo para realizar la red neuronal
-      </li>
-      <li>
         Para el entrenamiento de esta red neuronal, se ha utilizado la librería de código abierto <a href="https://www.tensorflow.org/?hl=es-419" target="_blank">TensorFlow</a>.
       </li>
       <li>
-        Se ha utilizado un <a href="http://yann.lecun.com/exdb/mnist/" target="_blank">Dataset Emnist</a> que contiene 60.000 imágenes de números escritos a mano de 28x28 pixeles, como se puede visualizar a la derecha.
+        Se ha utilizado un <a href="https://www.tensorflow.org/datasets/catalog/emnist?hl=es-419" target="_blank">Dataset Emnist</a> que contiene 88.000 imágenes de letras escritas a mano de 28x28 pixeles, como se puede visualizar a la derecha.
       </li>
       <li>
         Se ha utilizado una red neuronal convolucional (CNN) para el entrenamiento de este modelo.
@@ -28,9 +26,10 @@
       </li>
     </div>
     <div class="datasets-image-container">
-      <img src="../../../assets/img/datasets-numbers.jpg" alt="emnist"/>
+      <img src="../../../assets/img/datasets-letters1.png" alt="emnist"/>
     </div>
   </div>
+  <hr class="divider"/> 
   <div class="main-container-canva">
     <div id="canvas-container">
         <canvas #canvasModel2 id="canvas-model2" width="280" height="280"></canvas>
