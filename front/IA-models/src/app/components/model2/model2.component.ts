@@ -76,7 +76,7 @@ export class Model2Component implements AfterViewInit {
       console.log(pixels);
 
       $.ajax({
-        url: 'http://localhost:8000/predict/',
+        url: 'http://localhost:8000/predict2/',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ pixeles: pixels.join(',') }),
