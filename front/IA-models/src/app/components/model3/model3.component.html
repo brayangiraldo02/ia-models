@@ -1,10 +1,31 @@
-<div>
-  <button (click)="toggleWebcam()">
-    {{ showWebcam ? 'Ocultar' : 'Mostrar' }} Cámara
-  </button>
-  <button (click)="takeSnapshot()">Tomar Foto</button>
-  <div *ngIf="showWebcam">
-    <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+<div class="main-container">
+  <div class="controls">
+    <button (click)="takeSnapshot()">Tomar Foto</button>
+    <button (click)="toggleWebcam()">Activar/Desactivar Webcam</button>
   </div>
-  <img *ngIf="webcamImage" [src]="webcamImage.imageAsDataUrl" alt="Foto tomada" style="display: block; margin-top: 10px;">
+  <div class="content">
+    <div class="image-container">
+      <div class="webcam-container">
+        <webcam *ngIf="showWebcam"
+                [trigger]="triggerObservable"
+                (imageCapture)="handleImage($event)">
+        </webcam>
+        <div class="overlay"></div>
+      </div>
+      <div class="images-container">
+        <div class="images">
+          <div *ngIf="webcamImage" class="image">
+            <img [src]="webcamImage.imageAsDataUrl"/>
+          </div>
+          <div *ngIf="processedImageUrl" class="image">
+            <img [src]="processedImageUrl"/>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div *ngIf="imageText" class="api-response">
+      <h3>{{ imageText }}</h3>
+    </div>
+  </div>
 </div>

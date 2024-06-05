@@ -11,6 +11,9 @@ import { Model1Component } from './components/model1/model1.component';
 import { Model2Component } from './components/model2/model2.component';
 import { Model3Component } from './components/model3/model3.component';
 import { WebcamModule } from 'ngx-webcam';
+import { HttpClientModule } from '@angular/common/http';
+
+import { ImageUploadService } from './components/model3/services/image-upload.service';
 
 
 @NgModule({
@@ -24,12 +27,13 @@ import { WebcamModule } from 'ngx-webcam';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTabsModule,
     WebcamModule
   ],
-  providers: [],
+  providers: [ImageUploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
