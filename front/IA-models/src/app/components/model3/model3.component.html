@@ -1,1 +1,10 @@
-<p>model3 works!</p>
+<div>
+  <button (click)="toggleWebcam()">
+    {{ showWebcam ? 'Ocultar' : 'Mostrar' }} Cámara
+  </button>
+  <button (click)="takeSnapshot()">Tomar Foto</button>
+  <div *ngIf="showWebcam">
+    <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+  </div>
+  <img *ngIf="webcamImage" [src]="webcamImage.imageAsDataUrl" alt="Foto tomada" style="display: block; margin-top: 10px;">
+</div>

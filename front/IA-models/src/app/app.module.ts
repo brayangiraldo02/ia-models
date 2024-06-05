@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { Model1Component } from './components/model1/model1.component';
 import { Model2Component } from './components/model2/model2.component';
 import { Model3Component } from './components/model3/model3.component';
+import { WebcamModule } from 'ngx-webcam';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { Model3Component } from './components/model3/model3.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
