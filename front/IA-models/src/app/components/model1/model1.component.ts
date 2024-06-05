@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import * as $ from 'jquery';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-model1',
@@ -8,6 +8,8 @@ import * as $ from 'jquery';
 })
 export class Model1Component implements AfterViewInit {
   resultado: string = '';
+
+  constructor(private http: HttpClient) {}
 
   ngAfterViewInit(): void {
     this.setupCanvas();
@@ -63,9 +65,9 @@ export class Model1Component implements AfterViewInit {
 
       // Arreglo para almacenar los pixeles
       const pixels: string[] = [];
-      for (let x = 0; x < 28; x++) {
-        for (let y = 0; y < 28; y++) {
-          const imgData = hiddenCtx.getImageData(x, y, 1, 1).data;
+      for (let y = 0; y < 28; y++) { // Cambiado el orden a y,x
+        for (let x = 0; x < 28; x++) { // Cambiado el orden a y,x
+          const imgData = hiddenCtx.getImageData(x, y, 1, 1).data; // Cambiado el orden a y,x
           const color = (imgData[3] / 255).toFixed(2);
           pixels.push(color);
         }
@@ -73,16 +75,11 @@ export class Model1Component implements AfterViewInit {
 
       console.log(pixels);
 
-      $.ajax({
-        url: 'http://localhost:8000/predict/',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ pixeles: pixels.join(',') }),
-        success: (response: any) => {
+      this.http.post<{ prediction: string }>('http://localhost:8000/predict/', { pixeles: pixels.join(',') })
+        .subscribe(response => {
           console.log('Resultado: ' + response.prediction);
           this.resultado = response.prediction;
-        },
-      });
+        });
     };
   }
 
