@@ -28,7 +28,7 @@ export class Model2Component implements AfterViewInit {
     let mousedown = false;
 
     canvas.onmousedown = (e: MouseEvent) => {
-      const pos = this.fixPosition(e, canvas);
+      const pos = this.getMousePos(canvas, e);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       mousedown = true;
       ctx.beginPath();
@@ -46,7 +46,7 @@ export class Model2Component implements AfterViewInit {
 
     canvas.onmousemove = (e: MouseEvent) => {
       if (!mousedown) return;
-      const pos = this.fixPosition(e, canvas);
+      const pos = this.getMousePos(canvas, e);
       ctx.lineTo(pos.x, pos.y);
       ctx.stroke();
     };
@@ -88,9 +88,11 @@ export class Model2Component implements AfterViewInit {
     };
   }
 
-  fixPosition(e: MouseEvent, gCanvasElement: HTMLCanvasElement): { x: number; y: number } {
-    let x = e.pageX - gCanvasElement.offsetLeft;
-    let y = e.pageY - gCanvasElement.offsetTop;
-    return { x, y };
+  getMousePos(canvas: HTMLCanvasElement, evt: MouseEvent): { x: number; y: number } {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
   }
 }
